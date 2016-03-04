@@ -28,16 +28,29 @@ class SqsQueue implements Queue {
         $this->setQueues($queueName);
     }
 
+    public function setVisibilityTimeout($visibilityTimeout) {
+        $this->visibilityTimeout = $visibilityTimeout;
+        return $this;
+    }
+
+    public function setMaxWaitingSeconds($maxWaitingSeconds) {
+        $this->maxWaitingSeconds = $maxWaitingSeconds;
+        return $this;
+    }
+
     public function setSourceQueueUrl($queueUrl) {
         $this->sourceQueueUrl = $queueUrl;
+        return $this;
     }
 
     public function setFailedQueueUrl($queueUrl) {
         $this->failedQueueUrl = $queueUrl;
+        return $this;
     }
 
     public function setErrorQueueUrl($queueUrl) {
         $this->errorQueueUrl = $queueUrl;
+        return $this;
     }
 
     protected function setQueues($queueName) {
@@ -57,7 +70,7 @@ class SqsQueue implements Queue {
 
     public function setSqsClient(SqsClient $sqsClient) {
         $this->sqsClient = $sqsClient;
-        return;
+        return $this;
     }
 
     public function getNext() {
